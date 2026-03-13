@@ -25,12 +25,11 @@ const education = [
 ];
 
 const skills = [
-  { name: "JavaScript / TypeScript", level: 88, color: "bg-yellow-400" },
-  { name: "Golang", level: 75, color: "bg-pink-400" },
+  { name: "JavaScript", level: 88, color: "bg-yellow-400" },
   { name: "Node.js / Express.js", level: 85, color: "bg-teal-500" },
   { name: "MongoDB / PostgreSQL", level: 80, color: "bg-purple-500" },
-  { name: "React.js / Redux", level: 82, color: "bg-cyan-400" },
-  { name: "HTML / CSS / SASS", level: 92, color: "bg-pink-400" },
+  { name: "React.js", level: 82, color: "bg-cyan-400" },
+  { name: "HTML / CSS", level: 92, color: "bg-pink-400" },
 ];
 
 const SkillsSection = () => {
