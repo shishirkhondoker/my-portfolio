@@ -1,9 +1,19 @@
 import React from "react";
+import myPic from "../assets/myPic.png";
+import HeroSection from "../components/HeroSection";
+import About from "./About";
+import SkillsSection from "../components/SkillsSection";
+import ProjectsSection from "../components/ProjectSection";
+import ContactSection from "../components/ContactSection";
 
 const HomePage = () => {
   return (
     <div>
-      <h1 className="bg-sky-50">This is home page</h1>
+      <HeroSection />
+      <About />
+      <SkillsSection />
+      <ProjectsSection />
+      <ContactSection />
     </div>
   );
 };
