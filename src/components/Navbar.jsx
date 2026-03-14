@@ -1,78 +1,135 @@
-import React from "react";
-import { Link } from "react-router";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
+  const [theme, setTheme] = useState("light");
+  const navbarHeight = 80;
+
+  const toggleTheme = () => {
+    const newTheme = theme === "light" ? "dark" : "light";
+    setTheme(newTheme);
+    document.querySelector("html").setAttribute("data-theme", newTheme);
+  };
+
+  const handleScroll = (id) => {
+    const el = document.getElementById(id);
+    if (el) {
+      const top =
+        el.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
+      window.scrollTo({ top, behavior: "smooth" });
+
+      // Update the URL hash without reloading
+      window.history.replaceState(null, "", `/#${id}`);
+    }
+  };
+
   return (
-    <div className="navbar bg-amber-400 shadow-sm">
+    <div className="navbar fixed top-0 left-0 w-full z-50 bg-base-100 shadow-md">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              {" "}
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M4 6h16M4 12h8m-8 6h16"
-              />{" "}
-            </svg>
+            ☰
           </div>
+
           <ul
-            tabIndex="-1"
-            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
+            tabIndex={0}
+            className="menu menu-sm dropdown-content bg-base-100 rounded-box mt-3 w-52 p-2 shadow"
           >
             <li>
-              <a>Home</a>
+              <a
+                onClick={() => handleScroll("hero")}
+                className="cursor-pointer"
+              >
+                Home
+              </a>
             </li>
             <li>
-              <a>About</a>
-            </li>
-
-            <li>
-              <a>Skills</a>
-            </li>
-            <li>
-              <a>Projects</a>
+              <a
+                onClick={() => handleScroll("about")}
+                className="cursor-pointer"
+              >
+                About
+              </a>
             </li>
             <li>
-              <a>Contact</a>
+              <a
+                onClick={() => handleScroll("skills")}
+                className="cursor-pointer"
+              >
+                Skills
+              </a>
+            </li>
+            <li>
+              <a
+                onClick={() => handleScroll("projects")}
+                className="cursor-pointer"
+              >
+                Projects
+              </a>
+            </li>
+            <li>
+              <a
+                onClick={() => handleScroll("contact")}
+                className="cursor-pointer"
+              >
+                Contact
+              </a>
             </li>
           </ul>
         </div>
-        <Link to="/" className="text-2xl font-bold text-primary">
-          Shishir <span className="text-secondary italic">Khondoker</span>
+
+        {/* Logo / Name */}
+        <Link to="/" className="text-2xl font-bold">
+          <span className="text-primary">Shishir</span>{" "}
+          <span className="text-accent italic">Khondoker</span>
         </Link>
       </div>
-      <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">
-          <li>
-            <Link to={"/"}>
-              <a>Home</a>
-            </Link>
-          </li>
-          <li>
-            <a>About</a>
-          </li>
 
+      {/* Desktop Menu */}
+      <div className="navbar-center hidden lg:flex">
+        <ul className="menu menu-horizontal px-1 gap-3 font-medium">
           <li>
-            <a>Skills</a>
+            <a onClick={() => handleScroll("hero")} className="cursor-pointer">
+              Home
+            </a>
           </li>
           <li>
-            <a>Projects</a>
+            <a onClick={() => handleScroll("about")} className="cursor-pointer">
+              About
+            </a>
           </li>
           <li>
-            <a>Contact</a>
+            <a
+              onClick={() => handleScroll("skills")}
+              className="cursor-pointer"
+            >
+              Skills
+            </a>
+          </li>
+          <li>
+            <a
+              onClick={() => handleScroll("projects")}
+              className="cursor-pointer"
+            >
+              Projects
+            </a>
+          </li>
+          <li>
+            <a
+              onClick={() => handleScroll("contact")}
+              className="cursor-pointer"
+            >
+              Contact
+            </a>
           </li>
         </ul>
       </div>
+
+      {/* Theme Button */}
       <div className="navbar-end">
-        <a className="btn">Button</a>
+        <button onClick={toggleTheme} className="btn btn-primary btn-sm">
+          {theme === "light" ? "🌙 Dark" : "☀ Light"}
+        </button>
       </div>
     </div>
   );

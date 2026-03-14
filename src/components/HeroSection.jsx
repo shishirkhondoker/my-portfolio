@@ -2,7 +2,10 @@ import React from "react";
 import myPic from "../assets/myPic.png";
 const HeroSection = () => {
   return (
-    <section className="min-h-screen flex items-center bg-base-200 py-20">
+    <section
+      id="hero"
+      className="min-h-screen flex items-center bg-base-200 py-20"
+    >
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex flex-col-reverse lg:flex-row items-center gap-12">
           {/* Text Section */}

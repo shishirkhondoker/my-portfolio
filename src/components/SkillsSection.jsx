@@ -34,8 +34,11 @@ const skills = [
 
 const SkillsSection = () => {
   return (
-    <section id="education-skills" className="py-16 bg-base-200">
-      <div className="max-w-7xl mx-auto px-6">
+    <section
+      id="education-skills"
+      className="h-screen bg-base-200 flex items-center py-16"
+    >
+      <div className="max-w-7xl mx-auto px-6 w-full">
         <div className="text-center mb-12">
           <p className="text-purple-200 uppercase tracking-widest mb-2">
             Education & Skills
@@ -65,11 +68,6 @@ const SkillsSection = () => {
                   <p className="text-gray-500">{edu.year}</p>
                   <h3 className="font-semibold text-lg">{edu.title}</h3>
                   <p className="text-gray-400">{edu.institute}</p>
-                  {/* <span
-                    className={`text-sm inline-block mt-1 px-2 py-1 rounded-full text-white bg-${edu.color}`}
-                  >
-                    {edu.status}
-                  </span> */}
                 </div>
               </div>
             ))}
